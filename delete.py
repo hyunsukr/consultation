@@ -9,6 +9,7 @@ date = sys.argv[3]
 time = sys.argv[4]
 teamname = sys.argv[5]
 datetime = date + ' ' + time
+c.execute('''CREATE TABLE IF NOT EXISTS appt(date text PRIMARY KEY NOT NULL, teamname text NOT NULL, username NOT NULL)''')
 c.execute('SELECT * FROM user ')
 for row in c:
     if row[0] == username:
@@ -17,7 +18,7 @@ for row in c:
 if deleted == "Loggedin":
     c.execute('SELECT * FROM appt')
     for row in c:
-        if row[0] == datetime and row[2] == teamname and row[3] == username:
+        if row[0] == unicode(datetime) and row[1] == unicode(teamname) and row[2] == unicode(username):
             #cmd = 'DELETE FROM appt WHERE date = ' + str(datetime) + ' AND email = ' + str(email) + ' AND teamname = ' + str(teamname)
             c.execute('''DELETE FROM appt WHERE date = ? AND username = ? AND teamname = ?''',(str(datetime), str(username), str(teamname)))
             deleted = "deleted"

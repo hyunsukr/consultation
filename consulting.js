@@ -235,11 +235,71 @@ http.createServer(function (req, res) {
               fs.readFile('interface.html', function(err, data) {
                 res.writeHead(200, {'Content-Type': 'text/html'});
                 res.write(data);
-                res.write("Welcome")
-                res.write("</br> The date and time are currently: " + dt.myDateTime()+"</br>");
-                res.write('</div>')
-                res.write('<p class="ex1"> </p>');
-                printFooter(res);
+                res.write("<div class='alert alert-success'>");
+                res.write('<strong>Log in Success!</strong>');
+                res.write('</div>');
+                res.write('</br>');
+                res.write('<div class="row">');
+                res.write('<div class="col-xs-10 col-sm-3">');
+        
+                res.write('<nav class="navbar navbar-inverse navbar-fixed-left" style="background-color:#F8F8F8;">');
+                res.write('  <div class="navbar-header">');
+                res.write('    <a class="navbar-brand" href="/research"><span style = "color:#000099">Our Reserach</span></a>');
+                res.write('  </div>');
+                res.write('  <div id="navbar" class="navbar-collapse collapse">');
+                res.write('    <ul class="nav navbar-nav">');
+                res.write('      <li><a href="/home"><span style = "color:#900">Home</span></a></li>');
+                res.write('         <li role="separator" class="divider"></li>');
+                res.write('     <li class="dropdown">');
+                res.write('        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style = "color:#900">Research</span></a>');
+                res.write('      <ul class="dropdown-menu">');
+                res.write('         <li><a href="/DevAssessmentsAIG">Developing Assessments using</br>Automatic Item Generation</a></li>');
+                res.write('           <li role="separator" class="divider"></li>');
+                res.write('         <li><a href="/compbaseirtgen">Component-based Item</br>Response Theory using</br>Generalized Component</br>Structured Analysis</a></li>');
+                res.write('           <li role="separator" class="divider"></li>');
+                res.write('         <li><a href="/nonlingrowth">Nonlinear Growth Mixture</br>Modeling utilizing Fractional</br>Polynomials, Spline Models, </br>Accelerated Longitudinal Modeling, </br>Parametric Truncated</br>Logistic Models, etc.</a></li>');
+                res.write('           <li role="separator" class="divider"></li>');
+                res.write('         <li><a href="/mathphysmed">Mathematics Physiology in Medicine</a></li>');
+                res.write('     </ul>');
+                res.write('   </li>');
+                res.write('  </ul>');
+                res.write(' </div>');
+                res.write(' </nav>');
+                
+                res.write('</div>');
+                res.write('<div class="col-xs-10 col-sm-9">');
+                res.write('<h2 style = "color:#900; margin-bottom:0px;">Biostatics Core</span></h2>');
+                res.write('<hr style = "height:1px;border-color:#ffcc00; " >');
+                res.write("<p><strong><span style = 'color:#000000'>Mission</span></strong>: Biostatistics Core team generates interdisciplinary collaborations between CHLA, HSC, and USC investigators for cutting-edge human science research. Our team provides (1) consultations on grant development, study design, statistical analysis, reporting the results, and manuscript preparation, (2) workshops on foundational and advanced quantitative methods, and (3) state-of-art biostatistical methods. In addition, our team generates our own research agenda in the area of biostatistics, which bolsters and boosts the research activities in CHLA, HSC, and USC.</p>");
+                res.write("<p><strong><span style = 'color:#000000'>Biostatistics Research Collaboration</span></strong>: Our team consists of three members: a full-time faculty in the Saban Research Institute (TSRI) of the CHLA with a joint appointment in the Keck School of Medicine of the USC, and two full-time biostatisticians in TSRI. Our areas of expertise include but are not limited to:</p>");
+                res.write('<ul>');
+                res.write('<li>Generalized Linear Models</li>');
+                res.write('<li>Latent Variable Models</li>');
+                res.write('<li>Multilevel Modeling</li>');
+                res.write('<li>Longitudinal Data Analysis</li>');
+                res.write('<li>Psychometrics</li>');
+                res.write('<li>Structural Equation Modeling</li>');
+                res.write('<li>Survival Analysis</li>');
+                res.write('<li>Meta-Analysis</li>');
+                res.write('<li>Preventive Science</li>');
+                res.write('<li>Clinical Trials</li>');
+                res.write('<li>Neuroscience</li>');
+                res.write('<li>Big Data Analysis</li>');
+                res.write('</ul>');
+                res.write("<p><strong><span style = 'color:#000000'>Grant Development</span></strong>: Pre-award grant support is provided with the intention of developing a collaborative environment that will lead to funding success. Our team assists in grant development with the expectation in the principal investigator who will invite our team to be a co-investigator or biostatistician on the project. Our team provides consultations in the study design, power analysis, and analytic plan. The level of funding support needed will vary by project.</p>");
+                res.write("<p><strong><span style = 'color:#000000'>How the Biostatistics Core works</span></strong>: Investigators interested in our service in your grant applications or writing manuscripts can make a request by completing the online meeting request form. This form only needs to be completed once per project. Once submitted with relevant study background materials, you will be contacted to schedule a meeting. Most funding applications take extensive planning and forethought and adequate lead time on grant development efforts is needed and appreciated.</p>");
+                res.write("<p><strong><span style = 'color:#000000'>Biostatistics Core Projects</span> </strong>: Our team leads the following projects:</p>");
+                res.write('<ul>');
+                res.write('<li><span style = "color:#000000">Developing Assessments using Automatic Item Generation</span></li>');
+                res.write('<li><span style = "color:#000000">Component-based Item Response Theory using Generalized Component Structured Analysis</span></li>');
+                res.write('<li><span style = "color:#000000">Nonlinear Growth Mixture Modeling utilizing Fractional Polynomials, Spline Models, Accelerated Longitudinal Modeling, Parametric Truncated Logistic Models, etc. </span></li>');
+                res.write('<li><span style = "color:#000000">Mathematics Physiology in Medicine</span></li>');
+                res.write('</ul>');
+                res.write("<p><strong><span style = 'color:#000000'>Contact Information</span></strong>: If you have questions or would like to discuss your needs, contact Dr. Ji Hoon Ryoo at jr3gv@virginia.edu </span></p>");
+                res.write('</div>');
+                res.write('</div>');
+                res.write('</div>');
+                footbot(res);
                 res.write('</div>');
                 res.write('</body>');
                 res.write('</html>');  
@@ -285,12 +345,106 @@ http.createServer(function (req, res) {
       fs.readFile('interface.html', function(err, data) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.write(data);
-        res.write('enter stuff here about welcome');
-        res.write('</div>')
-        printFooter(res);
+        res.write('</br>');
+        res.write('<div class="row">');
+        res.write('<div class="col-xs-10 col-sm-3">');
+
+        res.write('<nav class="navbar navbar-inverse navbar-fixed-left" style="background-color:#F8F8F8;">');
+        res.write('  <div class="navbar-header">');
+        res.write('    <a class="navbar-brand" href="/research"><span style = "color:#000099">Our Reserach</span></a>');
+        res.write('  </div>');
+        res.write('  <div id="navbar" class="navbar-collapse collapse">');
+        res.write('    <ul class="nav navbar-nav">');
+        res.write('      <li><a href="/home"><span style = "color:#900">Home</span></a></li>');
+        res.write('         <li role="separator" class="divider"></li>');
+        res.write('     <li class="dropdown">');
+        res.write('        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style = "color:#900">Research</span></a>');
+        res.write('      <ul class="dropdown-menu">');
+        res.write('         <li><a href="/DevAssessmentsAIG">Developing Assessments using</br>Automatic Item Generation</a></li>');
+        res.write('           <li role="separator" class="divider"></li>');
+        res.write('         <li><a href="/compbaseirtgen">Component-based Item</br>Response Theory using</br>Generalized Component</br>Structured Analysis</a></li>');
+        res.write('           <li role="separator" class="divider"></li>');
+        res.write('         <li><a href="/nonlingrowth">Nonlinear Growth Mixture</br>Modeling utilizing Fractional</br>Polynomials, Spline Models, </br>Accelerated Longitudinal Modeling, </br>Parametric Truncated</br>Logistic Models, etc.</a></li>');
+        res.write('           <li role="separator" class="divider"></li>');
+        res.write('         <li><a href="/mathphysmed">Mathematics Physiology in Medicine</a></li>');
+        res.write('     </ul>');
+        res.write('   </li>');
+        res.write('  </ul>');
+        res.write(' </div>');
+        res.write(' </nav>');
+        
+        res.write('</div>');
+        res.write('<div class="col-xs-10 col-sm-9">');
+        res.write('<h2 style = "color:#900; margin-bottom:0px;">Biostatics Core</span></h2>');
+        res.write('<hr style = "height:1px;border-color:#ffcc00; " >');
+        res.write("<p><strong><span style = 'color:#000000'>Mission</span></strong>: Biostatistics Core team generates interdisciplinary collaborations between CHLA, HSC, and USC investigators for cutting-edge human science research. Our team provides (1) consultations on grant development, study design, statistical analysis, reporting the results, and manuscript preparation, (2) workshops on foundational and advanced quantitative methods, and (3) state-of-art biostatistical methods. In addition, our team generates our own research agenda in the area of biostatistics, which bolsters and boosts the research activities in CHLA, HSC, and USC.</p>");
+        res.write("<p><strong><span style = 'color:#000000'>Biostatistics Research Collaboration</span></strong>: Our team consists of three members: a full-time faculty in the Saban Research Institute (TSRI) of the CHLA with a joint appointment in the Keck School of Medicine of the USC, and two full-time biostatisticians in TSRI. Our areas of expertise include but are not limited to:</p>");
+        res.write('<ul>');
+        res.write('<li>Generalized Linear Models</li>');
+        res.write('<li>Latent Variable Models</li>');
+        res.write('<li>Multilevel Modeling</li>');
+        res.write('<li>Longitudinal Data Analysis</li>');
+        res.write('<li>Psychometrics</li>');
+        res.write('<li>Structural Equation Modeling</li>');
+        res.write('<li>Survival Analysis</li>');
+        res.write('<li>Meta-Analysis</li>');
+        res.write('<li>Preventive Science</li>');
+        res.write('<li>Clinical Trials</li>');
+        res.write('<li>Neuroscience</li>');
+        res.write('<li>Big Data Analysis</li>');
+        res.write('</ul>');
+        res.write("<p><strong><span style = 'color:#000000'>Grant Development</span></strong>: Pre-award grant support is provided with the intention of developing a collaborative environment that will lead to funding success. Our team assists in grant development with the expectation in the principal investigator who will invite our team to be a co-investigator or biostatistician on the project. Our team provides consultations in the study design, power analysis, and analytic plan. The level of funding support needed will vary by project.</p>");
+        res.write("<p><strong><span style = 'color:#000000'>How the Biostatistics Core works</span></strong>: Investigators interested in our service in your grant applications or writing manuscripts can make a request by completing the online meeting request form. This form only needs to be completed once per project. Once submitted with relevant study background materials, you will be contacted to schedule a meeting. Most funding applications take extensive planning and forethought and adequate lead time on grant development efforts is needed and appreciated.</p>");
+        res.write("<p><strong><span style = 'color:#000000'>Biostatistics Core Projects</span> </strong>: Our team leads the following projects:</p>");
+        res.write('<ul>');
+        res.write('<li><span style = "color:#000000">Developing Assessments using Automatic Item Generation</span></li>');
+        res.write('<li><span style = "color:#000000">Component-based Item Response Theory using Generalized Component Structured Analysis</span></li>');
+        res.write('<li><span style = "color:#000000">Nonlinear Growth Mixture Modeling utilizing Fractional Polynomials, Spline Models, Accelerated Longitudinal Modeling, Parametric Truncated Logistic Models, etc. </span></li>');
+        res.write('<li><span style = "color:#000000">Mathematics Physiology in Medicine</span></li>');
+        res.write('</ul>');
+        res.write("<p><strong><span style = 'color:#000000'>Contact Information</span></strong>: If you have questions or would like to discuss your needs, contact Dr. Ji Hoon Ryoo at jr3gv@virginia.edu </span></p>");
+        res.write('</div>');
+        res.write('</div>');
+        res.write('</div>');
+        footbot(res);
         res.write('</div>');
         res.write('</body>');
         res.write('</html>');  
+        res.end();
+      });
+    }
+    else if (req.url == '/DevAssessmentsAIG') {
+      fs.readFile('interface.html', function(err, data) {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
+        res.end();
+      });
+    }
+    else if (req.url == '/research') {
+      fs.readFile('interface.html', function(err, data) {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
+        res.end();
+      });
+    }
+    else if (req.url == '/compbaseirtgen') {
+      fs.readFile('interface.html', function(err, data) {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
+        res.end();
+      });
+    }
+    else if (req.url == '/nonlingrowth') {
+      fs.readFile('interface.html', function(err, data) {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
+        res.end();
+      });
+    }
+    else if (req.url == '/mathphysmed') {
+      fs.readFile('interface.html', function(err, data) {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
         res.end();
       });
     }
@@ -493,7 +647,7 @@ http.createServer(function (req, res) {
         time = time.replace("%3A", ':');
         var spawn = require("child_process").spawn;
         var pyFile = 'delete.py';
-        const pyspawn = spawn('python', [pyFile, username, password, email, date, time, teamname]);
+        const pyspawn = spawn('python', [pyFile, username, password, date, time, teamname]);
         pyspawn.stdout.on('data', (data) => {
           console.log(`stdout: ${data}`);
           var str = String.fromCharCode.apply(null, data);
@@ -750,8 +904,6 @@ http.createServer(function (req, res) {
         res.write('<input type="radio" name="time" required="required" value="2:30-3:00";/>2:30-3:00 </br>');
         res.write("</br> How many people are in your team? </br>");
         res.write('<input type="text" class="form-control" name = "Members" id="Members" placeholder="Number of members" required="required">');
-        res.write('<p class="text-danger">**Disclaimer** IF YOU DO NOT SEND YOUR FILE BEFORE 24HOURS OF THE MEETING TIME, THE MEETING WILL BE AUTOMATICALLY CANCELLED</p>')
-        res.write('I have emailed my file to ______ </br>');
         res.write('</br><button type="submit" required="required"  value="Submit" class="btn btn-primary">Submit</button>');
         res.write('</form>');
         res.write('</div>')
@@ -834,7 +986,6 @@ http.createServer(function (req, res) {
               res.write('<input type="radio" name="time" required="required" value="2:30-3:00";/>2:30-3:00 </br>');
               res.write("</br> How many people are in your team? </br>");
               res.write('<input type="text" class="form-control" name = "Members" id="Members" placeholder="Number of members" required="required">');
-              res.write('<p class="text-danger">**Disclaimer** IF YOU DO NOT SEND YOUR FILE BEFORE 24HOURS OF THE MEETING TIME, THE MEETING WILL BE AUTOMATICALLY CANCELLED</p>')
               res.write('</br><button type="submit" required="required"  value="Submit" class="btn btn-primary">Submit</button>');
               res.write('</form>');
               res.write('</div>')
@@ -871,7 +1022,6 @@ http.createServer(function (req, res) {
               res.write('<input type="radio" name="time" required="required" value="2:30-3:00";/>2:30-3:00 </br>');
               res.write("</br> How many people are in your team? </br>");
               res.write('<input type="text" class="form-control" name = "Members" id="Members" placeholder="Number of members" required="required">');
-              res.write('<p class="text-danger">**Disclaimer** IF YOU DO NOT SEND YOUR FILE BEFORE 24HOURS OF THE MEETING TIME, THE MEETING WILL BE AUTOMATICALLY CANCELLED</p>')
               res.write('</br><button type="submit" required="required"  value="Submit" class="btn btn-primary">Submit</button>');
               res.write('</form>');
               res.write('</div>')
@@ -905,7 +1055,7 @@ http.createServer(function (req, res) {
               res.write('<strong>Success!</strong> You have made a successful appointment.');
               res.write('</div>');
               res.write('<div class="alert alert-warning" role="alert">');
-              res.write('You must submit a sample of your consulting paper to the email _____ 48 prior to the meeting.');
+              res.write('You must submit a sample of your consulting paper to the email _____ 48hours prior to the meeting.');
               res.write('</div>');
               res.write('Or send it now (needs to be 48 hours prior to the meeting)');
               res.write('Please label it sampleout_teamname.doc or something including your teamname');
@@ -1034,7 +1184,8 @@ http.createServer(function (req, res) {
           }
       });
     }
-  }).listen(3000, '0.0.0.0');
+ // }).listen(3000, '0.0.0.0');
+}).listen(3000);
   
 function printFooter(res) {
   res.write('<div class="page-footer font-small blue  small text-light bg-dark" role = "contentinfo" style="position: fixed;width:100%; bottom: 0; padding-top: 1em; padding-bottom: 1em">');
