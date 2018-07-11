@@ -262,52 +262,15 @@ http.createServer(function (req, res) {
                 res.write('         <li><a href="/mathphysmed">Mathematics Physiology in Medicine</a></li>');
                 res.write('     </ul>');
                 res.write('   </li>');
-                res.write('     <li class="dropdown">');
-                res.write('        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style = "color:#900">Training</span></a>');
-                res.write('      <ul class="dropdown-menu">');
-                res.write('         <li><a href="/DevAssessmentsAIG">Developing Assessments using</br>Automatic Item Generation</a></li>');
-                res.write('           <li role="separator" class="divider"></li>');
-                res.write('         <li><a href="/compbaseirtgen">Component-based Item</br>Response Theory using</br>Generalized Component</br>Structured Analysis</a></li>');
-                res.write('     </ul>');
-                res.write('   </li>');
-
+                res.write('      <li><a href="/Training"><span style = "color:#900">Training</span></a></li>');
                 res.write('  </ul>');
                 res.write(' </div>');
                 res.write(' </nav>');
-                
                 res.write('</div>');
+                
                 res.write('<div class="col-xs-10 col-sm-9">');
                 res.write('<h2 style = "color:#900; margin-bottom:0px;">Biostatics Core</span></h2>');
                 res.write('<hr style = "height:1px;border-color:#ffcc00; " >');
-             /*
-                res.write('<div class="slideshow-container">');
-
-              res.write('<div class="mySlides fade">');
-              res.write('<div class="numbertext">1 / 3</div>');
-              res.write('<img src="img_nature_wide.jpg" style="width:100%">');
-              res.write('<div class="text">Caption Text</div>');
-              res.write('</div>');
-
-              res.write('<div class="mySlides fade">');
-              res.write('  <div class="numbertext">2 / 3</div>');
-              res.write(' <img src="img_snow_wide.jpg" style="width:100%">');
-              res.write(' <div class="text">Caption Two</div>');
-              res.write('</div>');
-
-              res.write('<div class="mySlides fade">');
-              res.write(' <div class="numbertext">3 / 3</div>');
-              res.write(' <img src="img_mountains_wide.jpg" style="width:100%">');
-              res.write('<div class="text">Caption Three</div>');
-              res.write('</div>');
-
-              res.write('</div>');
-              res.write('<br>');
-
-              res.write('<div style="text-align:center">');
-              res.write(' <span class="dot"></span> ');
-              res.write(' <span class="dot"></span> ');
-              res.write(' <span class="dot"></span> ');
-              res.write('</div>');*/
 
                 res.write("<p><strong><span style = 'color:#000000'>Mission</span></strong>: Biostatistics Core team generates interdisciplinary collaborations between CHLA, HSC, and USC investigators for cutting-edge human science research. Our team provides (1) consultations on grant development, study design, statistical analysis, reporting the results, and manuscript preparation, (2) workshops on foundational and advanced quantitative methods, and (3) state-of-art biostatistical methods. In addition, our team generates our own research agenda in the area of biostatistics, which bolsters and boosts the research activities in CHLA, HSC, and USC.</p>");
                 res.write("<p><strong><span style = 'color:#000000'>Biostatistics Research Collaboration</span></strong>: Our team consists of three members: a full-time faculty in the Saban Research Institute (TSRI) of the CHLA with a joint appointment in the Keck School of Medicine of the USC, and two full-time biostatisticians in TSRI. Our areas of expertise include but are not limited to:</p>");
@@ -408,14 +371,8 @@ http.createServer(function (req, res) {
         res.write('         <li><a href="/mathphysmed">Mathematics Physiology in Medicine</a></li>');
         res.write('     </ul>');
         res.write('   </li>');
-        res.write('     <li class="dropdown">');
-        res.write('        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style = "color:#900">Training</span></a>');
-        res.write('      <ul class="dropdown-menu">');
-        res.write('         <li><a href="/DevAssessmentsAIG">Developing Assessments using</br>Automatic Item Generation</a></li>');
-        res.write('           <li role="separator" class="divider"></li>');
-        res.write('         <li><a href="/compbaseirtgen">Component-based Item</br>Response Theory using</br>Generalized Component</br>Structured Analysis</a></li>');
-        res.write('     </ul>');
-        res.write('   </li>');
+        res.write('      <li><a href="/Training"><span style = "color:#900">Training</span></a></li>');
+
 
         res.write('  </ul>');
         res.write(' </div>');
@@ -490,6 +447,13 @@ http.createServer(function (req, res) {
       });
     }
     else if (req.url == '/mathphysmed') {
+      fs.readFile('interface.html', function(err, data) {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
+        res.end();
+      });
+    }
+    else if (req.url == '/Training') {
       fs.readFile('interface.html', function(err, data) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.write(data);
@@ -811,6 +775,36 @@ http.createServer(function (req, res) {
       fs.readFile('interface.html', function(err, data) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.write(data);
+        res.write('<div class="row">');
+        res.write('<div class="col-xs-10 col-sm-3">');
+
+        res.write('<nav class="navbar navbar-inverse navbar-fixed-left" style="background-color:#F8F8F8;">');
+        res.write('  <div class="navbar-header">');
+        res.write('    <a class="navbar-brand" href="/research"><span style = "color:#000099">Our Reserach</span></a>');
+        res.write('  </div>');
+        res.write('  <div id="navbar" class="navbar-collapse collapse">');
+        res.write('    <ul class="nav navbar-nav">');
+        res.write('      <li><a href="/home"><span style = "color:#900">Home</span></a></li>');
+        res.write('         <li role="separator" class="divider"></li>');
+        res.write('     <li class="dropdown">');
+        res.write('        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style = "color:#900">Research</span></a>');
+        res.write('      <ul class="dropdown-menu">');
+        res.write('         <li><a href="/DevAssessmentsAIG">Developing Assessments using</br>Automatic Item Generation</a></li>');
+        res.write('           <li role="separator" class="divider"></li>');
+        res.write('         <li><a href="/compbaseirtgen">Component-based Item</br>Response Theory using</br>Generalized Component</br>Structured Analysis</a></li>');
+        res.write('           <li role="separator" class="divider"></li>');
+        res.write('         <li><a href="/nonlingrowth">Nonlinear Growth Mixture</br>Modeling utilizing Fractional</br>Polynomials, Spline Models, </br>Accelerated Longitudinal Modeling, </br>Parametric Truncated</br>Logistic Models, etc.</a></li>');
+        res.write('           <li role="separator" class="divider"></li>');
+        res.write('         <li><a href="/mathphysmed">Mathematics Physiology in Medicine</a></li>');
+        res.write('     </ul>');
+        res.write('   </li>');
+        res.write('      <li><a href="/Training"><span style = "color:#900">Training</span></a></li>');
+        res.write('  </ul>');
+        res.write(' </div>');
+        res.write(' </nav>');
+        res.write('</div>');
+
+        res.write('<div class="col-xs-10 col-sm-9">');
         res.write('<table class="table table-hover">');
         res.write('<thead><tr>');
         res.write('<th scope="col">Profiles (click picture for more details)</th><th scope="col"></th></tr></thead>');
@@ -823,7 +817,13 @@ http.createServer(function (req, res) {
         res.write('<p style="padding-bottom:100px"> </p>');
         res.write('</div>')
         res.write('<p style = "padding-bottom:150px"></p>');
-        printFooter(res);
+        res.write('<p class="ex1"> </p>');
+
+        res.write('</div>');
+        res.write('</div>');
+        res.write('<p class="ex1"> </p>');
+
+        footbot(res);
         res.write('</div>');
         res.write('</body>');
         res.write('</html>');  
@@ -867,7 +867,7 @@ http.createServer(function (req, res) {
         res.write('</div>');
         res.write('</div>');
         res.write('<p style = "padding-bottom:150px"></p>');
-        printFooter(res);
+        footbot(res);
         res.write('</div>');
         res.write('</body>');
         res.write('</html>');  
@@ -909,7 +909,7 @@ http.createServer(function (req, res) {
         res.write('</div>');
         res.write('</div>');
         res.write('<p style = "padding-bottom:150px"></p>');
-        printFooter(res);
+        footbot(res);
         res.write('</div>');
         res.write('</body>');
         res.write('</html>');  
@@ -934,6 +934,36 @@ http.createServer(function (req, res) {
       fs.readFile('interface.html', function(err, data) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.write(data);
+        res.write('<div class="row">');
+        res.write('<div class="col-xs-10 col-sm-3">');
+
+        res.write('<nav class="navbar navbar-inverse navbar-fixed-left" style="background-color:#F8F8F8;">');
+        res.write('  <div class="navbar-header">');
+        res.write('    <a class="navbar-brand" href="/research"><span style = "color:#000099">Our Reserach</span></a>');
+        res.write('  </div>');
+        res.write('  <div id="navbar" class="navbar-collapse collapse">');
+        res.write('    <ul class="nav navbar-nav">');
+        res.write('      <li><a href="/home"><span style = "color:#900">Home</span></a></li>');
+        res.write('         <li role="separator" class="divider"></li>');
+        res.write('     <li class="dropdown">');
+        res.write('        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style = "color:#900">Research</span></a>');
+        res.write('      <ul class="dropdown-menu">');
+        res.write('         <li><a href="/DevAssessmentsAIG">Developing Assessments using</br>Automatic Item Generation</a></li>');
+        res.write('           <li role="separator" class="divider"></li>');
+        res.write('         <li><a href="/compbaseirtgen">Component-based Item</br>Response Theory using</br>Generalized Component</br>Structured Analysis</a></li>');
+        res.write('           <li role="separator" class="divider"></li>');
+        res.write('         <li><a href="/nonlingrowth">Nonlinear Growth Mixture</br>Modeling utilizing Fractional</br>Polynomials, Spline Models, </br>Accelerated Longitudinal Modeling, </br>Parametric Truncated</br>Logistic Models, etc.</a></li>');
+        res.write('           <li role="separator" class="divider"></li>');
+        res.write('         <li><a href="/mathphysmed">Mathematics Physiology in Medicine</a></li>');
+        res.write('     </ul>');
+        res.write('   </li>');
+        res.write('      <li><a href="/training"><span style = "color:#900">Training</span></a></li>');
+        res.write('  </ul>');
+        res.write(' </div>');
+        res.write(' </nav>');
+        res.write('</div>');
+
+        res.write('<div class="col-xs-10 col-sm-9">');
         res.write('<form name="schedule" method="post" action="/confirm" >');
         res.write('Username: <input type="text" class="form-control" name = "Username" id="Username" placeholder="" required="required">');
         res.write('Password: <input type="password" class="form-control" name="Password" id="password" placeholder="" pattern=".{8,}"   required title="8 characters minimum" required="required">');
@@ -954,8 +984,12 @@ http.createServer(function (req, res) {
         res.write('<input type="text" class="form-control" name = "Members" id="Members" placeholder="Number of members" required="required">');
         res.write('</br><button type="submit" required="required"  value="Submit" class="btn btn-primary">Submit</button>');
         res.write('</form>');
+        res.write('<p class="ex1"> </p>');
+
         res.write('</div>')
         res.write('<p></p>');
+        res.write('</div>');
+        res.write('</div>');
         footbot(res);
         res.write('</div>');
         res.write('</body>');
