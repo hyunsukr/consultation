@@ -931,72 +931,253 @@ http.createServer(function (req, res) {
       })
     }
     else if (req.url == '/schedule') {
-      fs.readFile('interface.html', function(err, data) {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write(data);
-        res.write('<div class="row">');
-        res.write('<div class="col-xs-10 col-sm-3">');
+      var spawn = require("child_process").spawn;
+      var pyFile = 'notavail.py';
+      const pyspawn = spawn('python', [pyFile]);
+      pyspawn.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`);
+        var str = String.fromCharCode.apply(null, data);
+        var arr = str.split('),');
+        if (str.trim() === "none".trim()) {
+          fs.readFile('interface.html', function(err, data) {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            res.write('<div class="row">');
+            res.write('<div class="col-xs-10 col-sm-3">');
+    
+            res.write('<nav class="navbar navbar-inverse navbar-fixed-left" style="background-color:#F8F8F8;">');
+            res.write('  <div class="navbar-header">');
+            res.write('    <a class="navbar-brand" href="/research"><span style = "color:#000099">Our Reserach</span></a>');
+            res.write('  </div>');
+            res.write('  <div id="navbar" class="navbar-collapse collapse">');
+            res.write('    <ul class="nav navbar-nav">');
+            res.write('      <li><a href="/home"><span style = "color:#900">Home</span></a></li>');
+            res.write('         <li role="separator" class="divider"></li>');
+            res.write('     <li class="dropdown">');
+            res.write('        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style = "color:#900">Research</span></a>');
+            res.write('      <ul class="dropdown-menu">');
+            res.write('         <li><a href="/DevAssessmentsAIG">Developing Assessments using</br>Automatic Item Generation</a></li>');
+            res.write('           <li role="separator" class="divider"></li>');
+            res.write('         <li><a href="/compbaseirtgen">Component-based Item</br>Response Theory using</br>Generalized Component</br>Structured Analysis</a></li>');
+            res.write('           <li role="separator" class="divider"></li>');
+            res.write('         <li><a href="/nonlingrowth">Nonlinear Growth Mixture</br>Modeling utilizing Fractional</br>Polynomials, Spline Models, </br>Accelerated Longitudinal Modeling, </br>Parametric Truncated</br>Logistic Models, etc.</a></li>');
+            res.write('           <li role="separator" class="divider"></li>');
+            res.write('         <li><a href="/mathphysmed">Mathematics Physiology in Medicine</a></li>');
+            res.write('     </ul>');
+            res.write('   </li>');
+            res.write('      <li><a href="/training"><span style = "color:#900">Training</span></a></li>');
+            res.write('  </ul>');
+            res.write(' </div>');
+            res.write(' </nav>');
+            res.write('</div>');
+    
+            res.write('<div class="col-xs-10 col-sm-9">');
+            res.write('<form name="schedule" method="post" action="/confirm" >');
+            res.write('Username: <input type="text" class="form-control" name = "Username" id="Username" placeholder="" required="required">');
+            res.write('Password: <input type="password" class="form-control" name="Password" id="password" placeholder="" pattern=".{8,}"   required title="8 characters minimum" required="required">');
+            res.write('Team Name: <input type="text" class="form-control" name = "Teamname" id="Teamname" placeholder="" required="required">');
+            res.write('Email: <input type="text" class="form-control" name = "emailpref" id="emailpref" placeholder="" required="required">');
+            res.write('What day would you like to meet? </br> ');
+            res.write('<input type="radio" name="day" required="required" value="Tuesday";/>Tuesday </br>');
+            res.write('<input type="radio" name="day" required="required" value="Wednesday";/>Wednesday </br>');
+            res.write('<input type="radio" name="day" required="required" value="Thursday";/>Thursday </br>');
+            res.write('</br>Please find the date you wish </br>');
+            res.write('<input type="date" required = "required" name = "date" id="date">');
+            res.write('</br></br>What time slot would you like?</br>');
+            res.write('<input type="radio" name="time" required="required" value="1:00-1:30";/>1:00-1:30 </br>');
+            res.write('<input type="radio" name="time" required="required" value="1:30-2:00";/>1:30-2:00 </br>');
+            res.write('<input type="radio" name="time" required="required" value="2:00-2:30";/>2:00-2:30 </br>');
+            res.write('<input type="radio" name="time" required="required" value="2:30-3:00";/>2:30-3:00 </br>');
+            res.write("</br> How many people are in your team? </br>");
+            res.write('<input type="text" class="form-control" name = "Members" id="Members" placeholder="Number of members" required="required">');
+            res.write('</br><button type="submit" required="required"  value="Submit" class="btn btn-primary">Submit</button>');
+            res.write('</form>');
+            res.write('<p class="ex1"> </p>');
+    
+            res.write('</div>')
+            res.write('<p></p>');
+            res.write('</div>');
+            res.write('</div>');
+            footbot(res);
+            res.write('</div>');
+            res.write('</body>');
+            res.write('</html>');  
+            res.end();
+          });
+        }
+        else {
+          fs.readFile('interface.html', function(err, data) {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            
+            res.write('<div class="row">');
+            res.write('<div class="col-xs-10 col-sm-3">');
+    
+            res.write('<nav class="navbar navbar-inverse navbar-fixed-left" style="background-color:#F8F8F8;">');
+            res.write('  <div class="navbar-header">');
+            res.write('    <a class="navbar-brand" href="/research"><span style = "color:#000099">Our Reserach</span></a>');
+            res.write('  </div>');
+            res.write('  <div id="navbar" class="navbar-collapse collapse">');
+            res.write('    <ul class="nav navbar-nav">');
+            res.write('      <li><a href="/home"><span style = "color:#900">Home</span></a></li>');
+            res.write('         <li role="separator" class="divider"></li>');
+            res.write('     <li class="dropdown">');
+            res.write('        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style = "color:#900">Research</span></a>');
+            res.write('      <ul class="dropdown-menu">');
+            res.write('         <li><a href="/DevAssessmentsAIG">Developing Assessments using</br>Automatic Item Generation</a></li>');
+            res.write('           <li role="separator" class="divider"></li>');
+            res.write('         <li><a href="/compbaseirtgen">Component-based Item</br>Response Theory using</br>Generalized Component</br>Structured Analysis</a></li>');
+            res.write('           <li role="separator" class="divider"></li>');
+            res.write('         <li><a href="/nonlingrowth">Nonlinear Growth Mixture</br>Modeling utilizing Fractional</br>Polynomials, Spline Models, </br>Accelerated Longitudinal Modeling, </br>Parametric Truncated</br>Logistic Models, etc.</a></li>');
+            res.write('           <li role="separator" class="divider"></li>');
+            res.write('         <li><a href="/mathphysmed">Mathematics Physiology in Medicine</a></li>');
+            res.write('     </ul>');
+            res.write('   </li>');
+            res.write('      <li><a href="/training"><span style = "color:#900">Training</span></a></li>');
+            res.write('  </ul>');
+            res.write(' </div>');
+            res.write(' </nav>');
+            res.write('</div>');
+    
+            res.write('<div class="col-xs-10 col-sm-9">');
+            res.write('<span style="color:#FF0000"> As of : ' + dt.myDateTime() + ' These times will <strong>NOT</strong> be available!  </span></br>');
+            var year = parseInt(dt.myDateTime().split(' ')[3],10);
+            if (dt.myDateTime().split(' ')[1] == 'Jan') {
+              var num = 1;
+            }
+            else if (dt.myDateTime().split(' ')[1] == 'Feb') {
+              var num = 2;
+            }
+            else if (dt.myDateTime().split(' ')[1] == 'Mar') {
+              var num = 3;
+            }
+            else if (dt.myDateTime().split(' ')[1] == 'Apr') {
+              var num = 4;
+            }
+            else if (dt.myDateTime().split(' ')[1] == 'May') {
+              var num = 5;
+            }
+            else if (dt.myDateTime().split(' ')[1] == 'Jun') {
+              var num = 6;
+            }
+            else if (dt.myDateTime().split(' ')[1] == 'Jul') {
+              var num = 7;
+            }
+            else if (dt.myDateTime().split(' ')[1] == 'Aug') {
+              var num = 8;
+            }
+            else if (dt.myDateTime().split(' ')[1] == 'Sep') {
+              var num = 9;
+            }
+            else if (dt.myDateTime().split(' ')[1] == 'Oct') {
+              var num = 10;
+            }
+            else if (dt.myDateTime().split(' ')[1] == 'Nov') {
+              var num = 11;
+            }
+            else if (dt.myDateTime().split(' ')[1] == 'Dec') {
+              var num = 12;
+            }
+            if (String(num+1).length == 1 && String(num+1) != '12') {
+              var next = '0'+String(num+1);
+            }
+            else if (String(num+1) == '12') {
+              var next = 1;
+            }
+            else {
+              var next = String(num+1);
+            }
+            if (String(num).length == 1) {
+              var month = '0' + String(num);
+            }
+            else {
+              var month = String(num);
+            }
+            res.write('<table class="table table-striped">');
+            res.write('<thead>');
+            res.write('<tr>');
+            res.write('<th scope="col">Date</th>');
+            res.write('<th scope="col">Time</th>');
+            res.write('</tr>');
+            res.write('</thead>');
+            res.write('<tbody>');
+            for (var i =0; i < arr.length; i++) {
+              if (i == 0) {
+                //res.write('hello' + arr[i].split('[(')[1].split("',")[0].split("u'")[1]);
+                if ((arr[i].split('[(')[1].split("',")[0].split("u'")[1].split('-')[1] == month || arr[i].split('[(')[1].split("',")[0].split("u'")[1].split('-')[1] == next) && !(parseInt(arr[i].split('[(')[1].split("',")[0].split("u'")[1].split('-')[0],10) < year)) {
+                  res.write('<tr>');
+                  res.write('<td>' + arr[i].split('[(')[1].split("',")[0].split("u'")[1].split(' ')[0] + '</td>');
+                  res.write('<td>' + arr[i].split('[(')[1].split("',")[0].split("u'")[1].split(' ')[1] + '</td>');
+                  res.write('</tr>');
 
-        res.write('<nav class="navbar navbar-inverse navbar-fixed-left" style="background-color:#F8F8F8;">');
-        res.write('  <div class="navbar-header">');
-        res.write('    <a class="navbar-brand" href="/research"><span style = "color:#000099">Our Reserach</span></a>');
-        res.write('  </div>');
-        res.write('  <div id="navbar" class="navbar-collapse collapse">');
-        res.write('    <ul class="nav navbar-nav">');
-        res.write('      <li><a href="/home"><span style = "color:#900">Home</span></a></li>');
-        res.write('         <li role="separator" class="divider"></li>');
-        res.write('     <li class="dropdown">');
-        res.write('        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style = "color:#900">Research</span></a>');
-        res.write('      <ul class="dropdown-menu">');
-        res.write('         <li><a href="/DevAssessmentsAIG">Developing Assessments using</br>Automatic Item Generation</a></li>');
-        res.write('           <li role="separator" class="divider"></li>');
-        res.write('         <li><a href="/compbaseirtgen">Component-based Item</br>Response Theory using</br>Generalized Component</br>Structured Analysis</a></li>');
-        res.write('           <li role="separator" class="divider"></li>');
-        res.write('         <li><a href="/nonlingrowth">Nonlinear Growth Mixture</br>Modeling utilizing Fractional</br>Polynomials, Spline Models, </br>Accelerated Longitudinal Modeling, </br>Parametric Truncated</br>Logistic Models, etc.</a></li>');
-        res.write('           <li role="separator" class="divider"></li>');
-        res.write('         <li><a href="/mathphysmed">Mathematics Physiology in Medicine</a></li>');
-        res.write('     </ul>');
-        res.write('   </li>');
-        res.write('      <li><a href="/training"><span style = "color:#900">Training</span></a></li>');
-        res.write('  </ul>');
-        res.write(' </div>');
-        res.write(' </nav>');
-        res.write('</div>');
+                }
+              }
+              else if (i == arr.length -1) {
+                //res.write('hello' + arr[i].split(')]')[0].split("',")[0].split("u'")[1]);
+                if ((arr[i].split(')]')[0].split("',")[0].split("u'")[1].split('-')[1] == month || arr[i].split(')]')[0].split("',")[0].split("u'")[1].split('-')[1] == next) && !(parseInt(arr[i].split(')]')[0].split("',")[0].split("u'")[1].split('-')[0],10) < year)) {
+                  res.write('<tr>');
+                  res.write('<td>' + arr[i].split(')]')[0].split("',")[0].split("u'")[1].split(' ')[0] + '</td>');
+                  res.write('<td>' + arr[i].split(')]')[0].split("',")[0].split("u'")[1].split(' ')[1] + '</td>');
+                  res.write('</tr>');
+                  res.write('</tbody>');
+                  res.write('</table>');
 
-        res.write('<div class="col-xs-10 col-sm-9">');
-        res.write('<form name="schedule" method="post" action="/confirm" >');
-        res.write('Username: <input type="text" class="form-control" name = "Username" id="Username" placeholder="" required="required">');
-        res.write('Password: <input type="password" class="form-control" name="Password" id="password" placeholder="" pattern=".{8,}"   required title="8 characters minimum" required="required">');
-        res.write('Team Name: <input type="text" class="form-control" name = "Teamname" id="Teamname" placeholder="" required="required">');
-        res.write('Email: <input type="text" class="form-control" name = "emailpref" id="emailpref" placeholder="" required="required">');
-        res.write('What day would you like to meet? </br> ');
-        res.write('<input type="radio" name="day" required="required" value="Tuesday";/>Tuesday </br>');
-        res.write('<input type="radio" name="day" required="required" value="Wednesday";/>Wednesday </br>');
-        res.write('<input type="radio" name="day" required="required" value="Thursday";/>Thursday </br>');
-        res.write('</br>Please find the date you wish </br>');
-        res.write('<input type="date" required = "required" name = "date" id="date">');
-        res.write('</br></br>What time slot would you like?</br>');
-        res.write('<input type="radio" name="time" required="required" value="1:00-1:30";/>1:00-1:30 </br>');
-        res.write('<input type="radio" name="time" required="required" value="1:30-2:00";/>1:30-2:00 </br>');
-        res.write('<input type="radio" name="time" required="required" value="2:00-2:30";/>2:00-2:30 </br>');
-        res.write('<input type="radio" name="time" required="required" value="2:30-3:00";/>2:30-3:00 </br>');
-        res.write("</br> How many people are in your team? </br>");
-        res.write('<input type="text" class="form-control" name = "Members" id="Members" placeholder="Number of members" required="required">');
-        res.write('</br><button type="submit" required="required"  value="Submit" class="btn btn-primary">Submit</button>');
-        res.write('</form>');
-        res.write('<p class="ex1"> </p>');
+                }
+              }
+              else {
+                //res.write('hello' + arr[i].split("',")[0].split("u'")[1]);
+                if ((arr[i].split("',")[0].split("u'")[1].split('-')[1] == month || arr[i].split("',")[0].split("u'")[1].split('-')[1] == next) && !(parseInt(arr[i].split("',")[0].split("u'")[1].split('-')[0],10) < year)) {
+                  res.write('<tr>');
+                  res.write('<td>' + arr[i].split("',")[0].split("u'")[1].split(' ')[0] + '</td>');
+                  res.write('<td>' + arr[i].split("',")[0].split("u'")[1].split(' ')[1] + '</td>');
+                  res.write('</tr>');
 
-        res.write('</div>')
-        res.write('<p></p>');
-        res.write('</div>');
-        res.write('</div>');
-        footbot(res);
-        res.write('</div>');
-        res.write('</body>');
-        res.write('</html>');  
-        res.end();
+                }
+              }
+              
+            }
+            res.write('<hr style = "height:1px;border-color:#ffcc00; " >');
+            res.write('<form name="schedule" method="post" action="/confirm" >');
+            res.write('Username: <input type="text" class="form-control" name = "Username" id="Username" placeholder="" required="required">');
+            res.write('Password: <input type="password" class="form-control" name="Password" id="password" placeholder="" pattern=".{8,}"   required title="8 characters minimum" required="required">');
+            res.write('Team Name: <input type="text" class="form-control" name = "Teamname" id="Teamname" placeholder="" required="required">');
+            res.write('Email: <input type="text" class="form-control" name = "emailpref" id="emailpref" placeholder="" required="required">');
+            res.write('What day would you like to meet? </br> ');
+            res.write('<input type="radio" name="day" required="required" value="Tuesday";/>Tuesday </br>');
+            res.write('<input type="radio" name="day" required="required" value="Wednesday";/>Wednesday </br>');
+            res.write('<input type="radio" name="day" required="required" value="Thursday";/>Thursday </br>');
+            res.write('</br>Please find the date you wish </br>');
+            res.write('<input type="date" required = "required" name = "date" id="date">');
+            res.write('</br></br>What time slot would you like?</br>');
+            res.write('<input type="radio" name="time" required="required" value="1:00-1:30";/>1:00-1:30 </br>');
+            res.write('<input type="radio" name="time" required="required" value="1:30-2:00";/>1:30-2:00 </br>');
+            res.write('<input type="radio" name="time" required="required" value="2:00-2:30";/>2:00-2:30 </br>');
+            res.write('<input type="radio" name="time" required="required" value="2:30-3:00";/>2:30-3:00 </br>');
+            res.write("</br> How many people are in your team? </br>");
+            res.write('<input type="text" class="form-control" name = "Members" id="Members" placeholder="Number of members" required="required">');
+            res.write('</br><button type="submit" required="required"  value="Submit" class="btn btn-primary">Submit</button>');
+            res.write('</form>');
+            res.write('<p class="ex1"> </p>');
+    
+            res.write('</div>')
+            res.write('<p></p>');
+            res.write('</div>');
+            res.write('</div>');
+            footbot(res);
+            res.write('</div>');
+            res.write('</body>');
+            res.write('</html>');  
+            res.end();
+          });
+        }
+       pyspawn.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`);
       });
-    }
+      pyspawn.on('close', (code) => {
+        console.log(`child process exited with code ${code}`);
+      });
+    });
+  }  
     else if (req.url =='/confirm') {
       var body = '';
       req.on('data', function(chunk) {
@@ -1141,7 +1322,7 @@ http.createServer(function (req, res) {
               res.write('</div>');
               res.write('Or send it now (needs to be 48 hours prior to the meeting)');
               res.write('Please label it sampleout_teamname.doc or something including your teamname');
-              res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
+              res.write('<form action="/fileupload" method="post" enctype="multipart/form-data">');
               res.write('<input type="file" name="filetoupload"><br>');
               res.write('</br><button type="submit" value="Submit" class="btn btn-primary">Submit</button>');
               res.write('</form>');
@@ -1268,7 +1449,7 @@ http.createServer(function (req, res) {
     }
  // }).listen(3000, '0.0.0.0');
 }).listen(3000);
-  
+
 function printFooter(res) {
   res.write('<div class="page-footer font-small blue  small text-light bg-dark" role = "contentinfo" style="position: fixed;width:100%; bottom: 0; padding-top: 1em; padding-bottom: 1em">');
   res.write('  <div class="container">');
